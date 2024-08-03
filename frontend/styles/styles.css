@@ -600,3 +600,399 @@ body:has(.side-menu:checked) {
         margin-left:30px;
     }
 }
+.container-recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100%;
+    margin-left: 270px;
+    padding: 20px;
+}
+
+.cardrecipes-container {
+    flex: 1 1 550px;
+    max-width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.cardrecipes-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px 24px 0 0;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background-color: #FAFAF5;
+    border-radius: 0 0 24px 24px;
+    border-top: 1px solid #E6E6E6;
+    box-sizing: border-box;
+}
+
+.card-footer-title {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.card-footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    width: 100%;
+}
+
+.card-footer-instructions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #555;
+}
+
+.ingredients-container {
+    flex: 1 1 300px;
+    max-width: 100%;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.ingredients-container h2 {
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.ingredients-container ul {
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.ingredients-container li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ingredient-image {
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ingredient-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.ingredient-quantity {
+    font-size: 14px;
+    color: #555;
+}
+
+.ingredients-container input[type="checkbox"] {
+    margin-left: auto;
+}
+
+.slidecontainer {
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    margin-left: 450px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#demo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#demo {
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    margin-left: 0px;
+}
+
+@media (max-width: 1024px) {
+    .container-recipes {
+        margin-top: 120px;
+        flex-direction: column;
+        margin-left: 0;
+    }
+    .cardrecipes-container {
+      max-width: 600px;
+    }
+
+    .ingredients-container {
+        max-width: 50%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .slidecontainer {
+        margin-left: 200px;
+    }
+}
+
+.add-to-pantry-button {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    left: 0px;
+    width: 100px;
+    height: 50px;
+    margin-top: 40px;
+}
+
+.add-to-pantry-button:hover {
+    background-color: #218838;
+}
+
+.recipespantrytitle {
+    position: relative;
+    margin-top: 10px;
+    margin-left:240px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 0;
+    padding-bottom: 30px;
+    font-size: 24px;
+}
+
+.recipespantrytitle svg {
+    width: 66px;
+    height: 58px;
+}
+
+.breadcrumbs {
+    font-size: 16px;
+    color: #666;
+    margin-top: 110px;
+    margin-left: 260px;
+    padding: 0%;
+}
+
+.pantry-summary, .meals-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: 240px;
+    margin-top:0px;
+}
+
+.ingredient-list, .meal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ingredient-item, .meal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.ingredient-item img, .meal-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.ingredient-details, .meal-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.ingredient-details h4, .meal-details h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.ingredient-details p, .meal-details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.add-ingredients-btn {
+    background-color: #999;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+}
+
+.add-ingredients-btn , .change-color-btn {
+    background-color: #999;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+}
+
+.delete-btn{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    .pantry-summary, .meals-summary {
+        padding: 10px;
+        margin-top:30px;
+        margin-left: 0px;
+    }
+
+    .ingredient-item, .meal-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .ingredient-item img, .meal-item img {
+        width: 40px;
+        height: 40px;
+        margin-left: 11px;
+    }
+
+    .ingredient-details h4, .meal-details h4 {
+        font-size: 14px;
+    }
+
+    .ingredient-details p, .meal-details p {
+        font-size: 12px;
+    }
+
+    .add-ingredients-btn , .change-color-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .breadcrumbs {
+        display: none;
+    }
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px;
+    text-align: center;
+}
+
+.more-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
