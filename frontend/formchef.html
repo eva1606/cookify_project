@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recipes</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="JavaScript/formchef.js" defer></script>
+</head>
+<body>
+    <main>
+        <div id="form-card" class="card">
+            <div id="form-container">
+                <h2>Create a Recipe</h2>
+                <form id="recipe-form" enctype="multipart/form-data">
+                    <input type="hidden" id="chef_id" name="chef_id">
+                    <div class="form-group">
+                        <label for="title">Recipe Name:</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image_url">Recipe Image:</label>
+                        <input type="file" id="image_url" name="image_url" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time:</label>
+                        <input type="text" id="time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="conservation">Conservation Duration:</label>
+                        <input type="text" id="conservation" name="conservation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients:</label>
+                        <div id="ingredient-list">
+                            <div class="ingredient-item">
+                                <input type="text" name="name" placeholder="Ingredient Name" required>
+                                <input type="text" name="quantity" placeholder="Quantity" required>
+                                <input type="text" name="unit" placeholder="Unit" required>
+                                <button type="button" onclick="removeIngredient(this)">Remove</button>
+                            </div>
+                        </div>
+                        <button type="button" onclick="addIngredient()">Add Ingredient</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Instructions:</label>
+                        <textarea id="instructions" name="instructions" rows="10" required></textarea>
+                    </div>
+                    <div class="form-group buttons">
+                        <button type="button" id="back-button" onclick="history.back()">Back</button>
+                        <button type="submit">Submit Recipe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="Js/formchef.js"></script>
+</body>
+</html>
