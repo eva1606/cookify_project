@@ -282,6 +282,15 @@ body:has(.side-menu:checked) {
     }
 }
 
+.show 
+{
+    display: none;
+}
+.notification-icon 
+{
+    display: none;
+}
+
 .sorting-controls {
     display: flex;
     justify-content: flex-end;
@@ -336,7 +345,146 @@ body:has(.side-menu:checked) {
 .mobile-footer {
     display: none;
 }
+.vertical-nav {
+    overflow: hidden;
+    position: fixed;
+    width: 220px;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+    top: 100px;
+    height: 100%;
+}
+.vertical-nav ul {
+    font-size: 20px;
+}
+.vertical-nav li {
+    padding: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.vertical-nav svg 
+{   width: 24px;
+    height: 20px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center; 
+}
 
+.vertical-nav i {
+    margin-right: 10px;
+}
+
+.vertical-nav a:hover {
+    background-color: #ddd;
+}
+.recipes-title {
+    position: relative;
+    margin-top: 120px;
+    margin-left: 280px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 0;
+    padding-bottom: 0px;
+}
+
+.recipes-title svg {
+    width: 56px;
+    height: 48px;
+}
+
+.recipes-title h2 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.filter-section {
+    margin-left: 230px;
+    padding: 20px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.filter-section form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.filter-section form div {
+    flex: 1 ; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.filter-section label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+.filter-section select,
+.filter-section button {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+#ok-button {
+    color: black;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    max-width: 60px;
+    max-height: 35px;
+    margin-top: 35px;
+}
+
+#ok-button:hover {
+    background-color: green;
+    color: white;
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    left:0px;
+}
+
+.filter-icon svg {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.sort-filter-container{
+    display: none;
+}
+.filter-panel {
+    display: none;
+}
 @media (max-width: 1024px) {
     .mobile-footer {
         display: flex;
