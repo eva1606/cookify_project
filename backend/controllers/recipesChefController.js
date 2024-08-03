@@ -34,7 +34,14 @@ const addRecipe = async (req, res) =>
 
 const getRecipesByChef = async (req, res) => 
 {
-    
+    const { chefId } = req.params;
+    try {
+        const [results] = await pool.execute('SELECT * FROM dbShnkr24stud.tbl_102_recipesbychef WHERE chef_id = ?', [chefId]);
+        res.json(results);
+    } catch (error) {
+        console.error('Database query error:', error);
+        res.status(500).json({ error: error.message });
+    }
 };
 
 const deleteRecipe = async (req, res) => 
