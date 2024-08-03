@@ -255,3 +255,29 @@ nav a {
 body:has(.side-menu:checked) {
     overflow: hidden;
 }
+@media (min-width: 1024px) {
+    .nav {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    .menu li {
+        float: left;
+    }
+
+    .menu a:hover {
+        background-color: transparent;
+        color: var(--gray);
+    }
+
+    .hamb {
+        display: none;
+    }
+    .search-bar {
+        width:100%;
+    }
+}
