@@ -10,7 +10,11 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 
 const loginRoutes = require('./routes/loginRoutes');
+const homeUserRoutes = require('./routes/homeUserRoutes');
+
+
 app.use('/api/auth', loginRoutes);  
+app.use('/api', homeUserRoutes);
 
 
 app.get('/', (req, res) => {
