@@ -50,5 +50,85 @@
               </svg>Notifications</a></li>
         </ul>
     </aside>
+    <main>
+        <div class="recipes-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="74" viewBox="0 0 80 74" fill="none">
+                <g clip-path="url(#clip0_493_53)">
+                  <g filter="url(#filter0_d_493_53)">
+                    <path d="M33.3333 61.6667V43.1667H46.6667V61.6667H63.3333V37H73.3333L40 9.25L6.66666 37H16.6667V61.6667H33.3333Z" fill="black"/>
+                    <path d="M33.3333 42.6667H32.8333V43.1667V61.1667H17.1667V37V36.5H16.6667H8.04874L40 9.90059L71.9512 36.5H63.3333H62.8333V37V61.1667H47.1667V43.1667V42.6667H46.6667H33.3333Z" stroke="black"/>
+                  </g>
+                </g>
+                <defs>
+                  <filter id="filter0_d_493_53" x="2.66666" y="9.25" width="74.6667" height="60.4167" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_493_53"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_493_53" result="shape"/>
+                  </filter>
+                  <clipPath id="clip0_493_53">
+                    <rect width="80" height="74" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            <h2>Home</h2>
+        </div>
+        <div class="sort-filter-container">
+            <button class="sort-button" onclick="toggleSortMenu()">Sort &#9660;</button>
+            <div id="sortMenu" class="dropdown-content">
+                <a href="#" data-criteria="name">Name</a>
+                <a href="#" data-criteria="level">Level</a>
+                <a href="#" data-criteria="conservation">Conservation</a>
+            </div>
+            <button class="filter-button" onclick="toggleFilterPanel()">Filter</button>
+        </div>  
+        <div id="filterPanel" class="filter-panel">
+            <div class="filter-header">
+                <h2>Filter recipes</h2>
+                <button class="close-button" onclick="toggleFilterPanel()">&#10005;</button>
+            </div>
+            <div class="filter-options">
+                <button>Expensive</button>
+                <button>New</button>
+            </div>
+            <button class="confirm-button">CONFIRM</button>
+        </div>
+        <div class="sorting-controls">
+            <select id="sort-options" class="control-select">
+                <option value="sort-by">Sort By</option>
+                <option value="name">Name</option>
+                <option value="difficulty">Difficulty</option>
+                <option value="time">Time</option>
+            </select>
+            <select id="view-options" class="control-select">
+                <option value="view-by">View By</option>
+                <option value="all">All</option>
+                <option value="favorites">Favorites</option>
+                <option value="recent">Recent</option>
+            </select>
+        </div> 
+        <section class="recipe-section">
+            <h2 class="section-title"><i class="fas fa-utensils"></i> For You</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn left-btn" id="leftBtn">&#8249;</button>
+                <div class="carousel" id="recipeCarousel">
+                </div>
+                <button class="carousel-btn right-btn" id="rightBtn">&#8250;</button>
+            </div>
+        </section>   
+        <section class="recipe-section">
+            <h2 class="section-title"><i class="fas fa-fire"></i> Trending Now</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn left-btn" id="trendingLeftBtn">&#8249;</button>
+                <div class="carousel" id="trendingRecipeCarousel">
+                </div>
+                <button class="carousel-btn right-btn" id="trendingRightBtn">&#8250;</button>
+            </div>
+        </section>             
+    </main>
 </body>
 </html>
