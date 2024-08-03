@@ -107,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  document.getElementById('searchBar').addEventListener('input', function() {
+    const searchTerm = searchBar.value.toLowerCase();
+    const filteredForYou = forYouRecipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
+    const filteredTrending = trendingRecipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
+    displayRecipes(filteredForYou, recipeContainer, 0);
+    displayRecipes(filteredTrending, trendingRecipeContainer, 0);
+  });
+
   getmyreceipts();
 });
 
