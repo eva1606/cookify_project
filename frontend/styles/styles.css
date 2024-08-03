@@ -371,3 +371,232 @@ body:has(.side-menu:checked) {
         padding: 10px;
     }
 }
+.sort-filter-container{
+    display: none;
+}
+
+.filter-panel {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .sort-filter-container {
+        flex-direction: row;
+        align-items:flex-start;
+    }
+
+    .sort-button,
+    .filter-button {
+        width: 100%;
+    }
+
+    .filter-button {
+        margin-bottom: 0;
+    }
+
+    .filter-section {
+        display: none;
+    }
+
+    .recipe-container {
+        width: calc(50% - 20px);
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .container .card {
+        width: 100%; 
+        min-width: 600px; 
+        margin-right: 250px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 14px;
+    }
+
+    .card {
+        width: calc(50% - 20px);
+    }
+
+    .sort-filter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px;
+        position:relative;
+        margin-top: 100px;
+    }
+
+    .sort-button,
+    .filter-button {
+        background-color: #fff;
+        border: none;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 0px;
+        height: 100px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+        width: 100%;
+        top: 100px; 
+        right: 0px;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .filter-panel {
+        position: absolute;
+        top: 120px; 
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    .filter-panel .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    .filter-panel .filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    .filter-panel .filter-options button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+    }
+
+    .filter-panel .confirm-button {
+        margin: 20px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #ccc;
+    }
+
+    .close-button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .sorting-controls {
+        display: none;
+    }
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 280px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-btn {
+    background-color: white;
+    border: none;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin: 0;
+    padding-left: 10px; 
+    display: flex;
+    align-items: center;
+    margin-left:320px;
+}
+
+.section-title i {
+    margin-right: 10px;
+}
+
+@media (max-width: 1024px) {
+    .carousel-wrapper {
+        margin-left:0px;
+    }
+    .section-title {
+        margin-left:30px;
+    }
+}
