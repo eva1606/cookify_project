@@ -115,8 +115,51 @@ document.addEventListener("DOMContentLoaded", function() {
     displayRecipes(filteredTrending, trendingRecipeContainer, 0);
   });
 
+  document.getElementById('sortMenu').addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+      event.preventDefault();
+      const criteria = event.target.dataset.criteria;
+      sortRecipes(forYouRecipes, criteria);
+      sortRecipes(trendingRecipes, criteria);
+      displayRecipes(forYouRecipes, recipeContainer, currentIndex);
+      displayRecipes(trendingRecipeContainer, currentTrendingIndex);
+    }
+  });
+
+  function sortRecipes(recipes, criteria) {
+    if (criteria === 'name') {
+      recipes.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (criteria === 'level') {
+      const levels = ['easy', 'medium', 'hard'];
+      recipes.sort((a, b) => levels.indexOf(a.difficulty.toLowerCase()) - levels.indexOf(b.difficulty.toLowerCase()));
+    } else if (criteria === 'conservation') {
+      recipes.sort((a, b) => {
+        const getDays = str => parseInt(str.match(/\d+/)) || 0;
+        return getDays(a.conservation) - getDays(b.conservation);
+      });
+    }
+  }
+
+  document.getElementById('sort-options').addEventListener('change', function() {
+    const sortValue = sortSelect.value;
+    if (sortValue === 'name') {
+      forYouRecipes.sort((a, b) => a.name.localeCompare(b.name));
+      trendingRecipes.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortValue === 'difficulty') {
+      forYouRecipes.sort((a, b) => a.difficulty.localeCompare(b.difficulty));
+      trendingRecipes.sort((a, b) => a.difficulty.localeCompare(b.difficulty));
+    } else if (sortValue === 'time') {
+      forYouRecipes.sort((a, b) => parseInt(a.time) - parseInt(b.time));
+      trendingRecipes.sort((a, b) => parseInt(a.time) - parseInt(b.time));
+    }
+    displayRecipes(forYouRecipes, recipeContainer, currentIndex);
+    displayRecipes(trendingRecipeContainer, currentTrendingIndex);
+  });
+
   getmyreceipts();
 });
 
+
+ 
  
   
