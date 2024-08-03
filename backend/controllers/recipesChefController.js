@@ -46,7 +46,15 @@ const getRecipesByChef = async (req, res) =>
 
 const deleteRecipe = async (req, res) => 
 {
-   
+    const { id } = req.params;
+    try {
+        await pool.execute('DELETE FROM dbShnkr24stud.tbl_102_recipesbychef WHERE id = ?', [id]);
+        await pool.execute('DELETE FROM dbShnkr24stud.tbl_102_ingredients WHERE recipe_id = ?', [id]);
+        res.json({ message: 'Recipe deleted successfully' });
+    } catch (error) {
+        console.error('Database delete error:', error);
+        res.status(500).json({ error: error.message });
+    }
 };
 
 const updateRecipe = async (req, res) => 
