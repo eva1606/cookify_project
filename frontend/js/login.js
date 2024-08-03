@@ -18,7 +18,10 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         if (response.ok) {
             if (data.permission === 0) {
                 window.location.href = 'homeuser.html'; 
-            } else {
+            } 
+            else if (data.permission === 1) {
+                window.location.href = 'chefpage.html';
+            }else {
                 alert('You do not have permission to access this page.');
             }
         } else {
