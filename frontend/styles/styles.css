@@ -332,3 +332,42 @@ body:has(.side-menu:checked) {
     width: 150px;
     height: 150px;
 }
+
+.mobile-footer {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mobile-footer {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        justify-content: space-around;
+        align-items: center;
+        height: 90px;
+        z-index: 1000;
+    }
+
+    .mobile-footer svg {
+        display: block;
+        margin: 0 auto 10px;
+        width: 44px;
+        height: 24px;
+    }
+
+    .mobile-footer span {
+        font-size: 20px;
+        color: black;
+    }
+
+    footer .footer-icon.active {
+        color: #fff;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        padding: 10px;
+    }
+}
