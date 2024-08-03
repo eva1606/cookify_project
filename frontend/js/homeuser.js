@@ -7,21 +7,32 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentTrendingIndex = 0;
     const cardsPerView = 3;
   
-    const getmyreceipts = () => {
-      Promise.all([
-        fetch('http://localhost:3000/api/recipes-foryou').then(response => response.json()),
-        fetch('http://localhost:3000/api/recipes-trendingnow').then(response => response.json())
-      ])
-      .then(([recipesForYou, trendingRecipes]) => {
-        forYouRecipes = recipesForYou;
-        trendingRecipes = trendingRecipes;
-        displayRecipes(forYouRecipes, recipeContainer, currentIndex);
-        displayRecipes(trendingRecipes, trendingRecipeContainer, currentTrendingIndex);
-      })
-      .catch(error => {
-        console.error('Erreur:', error);
-      });
-    };
+    const fetchForYouRecipes = () => {
+      return fetch('http://localhost:3000/api/recipes-foryou')
+          .then(response => response.json())
+          .then(recipes => {
+              forYouRecipes = Array.isArray(recipes) ? recipes : [];
+              console.log('For You Recipes:', forYouRecipes);
+              displayRecipes(forYouRecipes, recipeContainer, currentIndex);
+          })
+          .catch(error => {
+              console.error('Error fetching For You recipes:', error);
+          });
+  };
+
+  const fetchTrendingRecipes = () => {
+      return fetch('http://localhost:3000/api/recipes-trendingnow')
+          .then(response => response.json())
+          .then(recipes => {
+              trendingRecipes = Array.isArray(recipes) ? recipes : [];
+              console.log('Trending Recipes:', trendingRecipes);
+              displayRecipes(trendingRecipes, trendingRecipeContainer, currentTrendingIndex);
+          })
+          .catch(error => {
+              console.error('Error fetching Trending recipes:', error);
+          });
+  };
+
   
   function displayRecipes(recipes, container, startIndex) {
     container.innerHTML = '';
@@ -30,14 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     visibleRecipes.forEach(recipe => {
       const card = document.createElement('div');
-      card.classList.add('card');
+      card.classList.add('recipe-card');
 
       const img = document.createElement('img');
       img.src = recipe.image;
       img.alt = recipe.name;
+      img.classList.add('recipe-image');
 
       const cardContent = document.createElement('div');
-      cardContent.classList.add('card-content');
+      cardContent.classList.add('recipe-details');
 
       const title = document.createElement('h3');
       title.textContent = recipe.name;
@@ -157,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   window.toggleFilterPanel = function() {
+    const filterPanel = document.getElementById('filterPanel');
     if (window.matchMedia("(max-width: 1024px)").matches) {
       filterPanel.classList.toggle("show");
     } else {
@@ -169,10 +182,12 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   window.toggleSortMenu = function() {
+    const sortMenu = document.getElementById('sortMenu');
     sortMenu.classList.toggle("show");
   }
 
-  getmyreceipts();
+  fetchForYouRecipes();
+  fetchTrendingRecipes();
 });
 
 
