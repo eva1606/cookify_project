@@ -16,7 +16,7 @@ exports.getTrendingRecipes = async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error('Error fetching Trending recipes:', err);
-        console.log('Error details:', err); // Ajoutez ceci pour plus de détails
+        console.log('Error details:', err); 
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
