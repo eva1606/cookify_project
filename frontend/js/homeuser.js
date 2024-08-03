@@ -68,9 +68,48 @@ document.addEventListener("DOMContentLoaded", function() {
     updateButtons(recipes, container);
   }
 
+
+  function updateButtons(recipes, container) {
+    const isForYouRecipes = container === recipeContainer;
+    const index = isForYouRecipes ? currentIndex : currentTrendingIndex;
+    const leftButton = isForYouRecipes ? document.getElementById('leftBtn') : document.getElementById('trendingLeftBtn');
+    const rightButton = isForYouRecipes ? document.getElementById('rightBtn') : document.getElementById('trendingRightBtn');
+
+    leftButton.disabled = index === 0;
+    rightButton.disabled = index + cardsPerView >= recipes.length;
+  }
+
+  document.getElementById('leftBtn').addEventListener('click', function() {
+    if (currentIndex > 0) {
+      currentIndex -= cardsPerView;
+      displayRecipes(forYouRecipes, recipeContainer, currentIndex);
+    }
+  });
+
+  document.getElementById('rightBtn').addEventListener('click', function() {
+    if (currentIndex + cardsPerView < forYouRecipes.length) {
+      currentIndex += cardsPerView;
+      displayRecipes(forYouRecipes, recipeContainer, currentIndex);
+    }
+  });
+
+  document.getElementById('trendingLeftBtn').addEventListener('click', function() {
+    if (currentTrendingIndex > 0) {
+      currentTrendingIndex -= cardsPerView;
+      displayRecipes(trendingRecipes, trendingRecipeContainer, currentTrendingIndex);
+    }
+  });
+
+  document.getElementById('trendingRightBtn').addEventListener('click', function() {
+    if (currentTrendingIndex + cardsPerView < trendingRecipes.length) {
+      currentTrendingIndex += cardsPerView;
+      displayRecipes(trendingRecipes, trendingRecipeContainer, currentTrendingIndex);
+    }
+  });
+
   getmyreceipts();
 });
 
-  
+ 
   
  
