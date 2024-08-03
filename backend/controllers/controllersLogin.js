@@ -8,7 +8,7 @@ const login = async (req, res) => {
     }
 
     try {
-        const [user] = await pool.execute('SELECT * FROM tbl_102_users WHERE username = ? AND password = ?', [username, password]);
+        const [user] = await pool.execute('SELECT * FROM dbShnkr24stud.tbl_102_users WHERE username = ? AND password = ?', [username, password]);
         console.log('Database user result:', user);
 
         if (user.length === 0) {

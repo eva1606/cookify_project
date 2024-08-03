@@ -11,9 +11,12 @@ exports.getAllRecipesForYou = async (req, res) => {
 
 exports.getTrendingRecipes = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM dbShnkr24stud.tbl_102_trendingnow');
+        const [rows] = await pool.query('SELECT * FROM dbShnkr24stud.tbl_102_recipes_trendingnow');
+        console.log('Trending Recipes:', rows);
         res.json(rows);
     } catch (err) {
+        console.error('Error fetching Trending recipes:', err);
+        console.log('Error details:', err); // Ajoutez ceci pour plus de détails
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
