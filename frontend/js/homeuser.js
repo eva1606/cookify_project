@@ -156,6 +156,22 @@ document.addEventListener("DOMContentLoaded", function() {
     displayRecipes(trendingRecipeContainer, currentTrendingIndex);
   });
 
+  window.toggleFilterPanel = function() {
+    if (window.matchMedia("(max-width: 1024px)").matches) {
+      filterPanel.classList.toggle("show");
+    } else {
+      filterPanel.classList.remove("show");
+    }
+  }
+
+  document.getElementById('logout-button').addEventListener('click', function() {
+    window.location.href = 'login.html'; 
+  });
+
+  window.toggleSortMenu = function() {
+    sortMenu.classList.toggle("show");
+  }
+
   getmyreceipts();
 });
 
