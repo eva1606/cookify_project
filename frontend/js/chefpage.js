@@ -7,19 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log("Chef ID retrieved from localStorage:", chefId);
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const chefId = localStorage.getItem('chefId');
-    if (!chefId) {
-        console.error("Chef ID not found in localStorage");
-        window.location.href = 'login.html';
-        return;
-    }
-
-    console.log("Chef ID retrieved from localStorage:", chefId);
-
-    fetch(`/api/recipes/${chefId}`)
+    fetch(`/api/chef/recipes/${chefId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -66,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 recipeActions.querySelector('.delete-button').addEventListener('click', () => {
-                    fetch(`/api/recipes/${recipe.id}`, { method: 'DELETE' })
+                    fetch(`/api/chef/recipes/${recipe.id}`, { method: 'DELETE' })
                         .then(response => response.json())
                         .then(() => {
                             window.location.reload();

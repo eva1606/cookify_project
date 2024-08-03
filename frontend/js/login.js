@@ -15,13 +15,17 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
         const data = await response.json();
 
+        console.log('Login Response:', data); // Log response for debugging
+
         if (response.ok) {
+            localStorage.setItem('chefId', data.user_id); // Store chefId in localStorage
             if (data.permission === 0) {
+                console.log('Redirecting to homeuser.html');
                 window.location.href = 'homeuser.html'; 
-            } 
-            else if (data.permission === 1) {
+            } else if (data.permission === 1) {
+                console.log('Redirecting to chefpage.html');
                 window.location.href = 'chefpage.html';
-            }else {
+            } else {
                 alert('You do not have permission to access this page.');
             }
         } else {
