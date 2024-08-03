@@ -59,7 +59,38 @@ const deleteRecipe = async (req, res) =>
 
 const updateRecipe = async (req, res) => 
 {
-    
+    const { id } = req.params;
+    const { chef_id, title, ingredients, instructions, time, conservation, difficulty, prepTime, cookTime } = req.body;
+    const image_url = req.file ? `/uploads/${req.file.filename}` : req.body.image_url;
+
+    if (!chef_id || !title || !ingredients || !instructions || !time || !conservation || !difficulty || !prepTime || !cookTime) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    try {
+        await pool.execute(
+            'UPDATE dbShnkr24stud.tbl_102_recipesbychef SET chef_id = ?, title = ?, instructions = ?, image_url = ?, time = ?, conservation = ?, difficulty = ?, prepTime = ?, cookTime = ? WHERE id = ?',
+            [chef_id, title, instructions, image_url, time, conservation, difficulty, prepTime, cookTime, id]
+        );
+
+        const parsedIngredients = JSON.parse(ingredients);
+
+        await pool.execute('DELETE FROM dbShnkr24stud.tbl_102_ingredients WHERE recipe_id = ?', [id]);
+
+        const ingredientQueries = parsedIngredients.map(ingredient => {
+            return pool.execute(
+                'INSERT INTO dbShnkr24stud.tbl_102_ingredients (name, quantity, unit, recipe_id) VALUES (?, ?, ?, ?)',
+                [ingredient.name, ingredient.quantity, ingredient.unit, id]
+            );
+        });
+
+        await Promise.all(ingredientQueries);
+
+        res.json({ message: 'Recipe updated successfully' });
+    } catch (error) {
+        console.error('Database update error:', error);
+        res.status(500).json({ error: error.message });
+    }
 };
 
 module.exports = {
