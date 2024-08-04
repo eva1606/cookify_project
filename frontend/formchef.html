@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Recipes</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="JavaScript/formchef.js" defer></script>
 </head>
 <body>
     <main>
@@ -23,7 +22,15 @@
                         <input type="file" id="image_url" name="image_url" accept="image/*" required>
                     </div>
                     <div class="form-group">
-                        <label for="time">Time:</label>
+                        <label for="prepTime">Preparation Time:</label>
+                        <input type="text" id="prepTime" name="totalTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cookTime">Cook Time:</label>
+                        <input type="text" id="cookTime" name="cookTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Total Time:</label>
                         <input type="text" id="time" name="time" required>
                     </div>
                     <div class="form-group">
@@ -48,7 +55,7 @@
                                 <button type="button" onclick="removeIngredient(this)">Remove</button>
                             </div>
                         </div>
-                        <button type="button" onclick="addIngredient()">Add Ingredient</button>
+                        <button type="button" id="add-ingredient-button">Add Ingredient</button>
                     </div>
                     <div class="form-group">
                         <label for="instructions">Instructions:</label>
@@ -62,6 +69,6 @@
             </div>
         </div>
     </main>
-    <script src="Js/formchef.js"></script>
+    <script src="js/formchef.js"></script>
 </body>
 </html>
