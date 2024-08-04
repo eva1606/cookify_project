@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Chef ID retrieved from localStorage:", chefId);
 
-    fetch(`/api/chef/recipes/${chefId}`)
+    fetch(`/api/recipes/${chefId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 recipeActions.querySelector('.delete-button').addEventListener('click', () => {
-                    fetch(`/api/chef/recipes/${recipe.id}`, { method: 'DELETE' })
+                    fetch(`/api/recipes/${recipe.id}`, { method: 'DELETE' })
                         .then(response => response.json())
                         .then(() => {
                             window.location.reload();

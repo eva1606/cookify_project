@@ -3,6 +3,7 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const multer = require('multer');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -14,11 +15,13 @@ if (!fs.existsSync(uploadsDir)) {
 
 const loginRoutes = require('./routes/loginRoutes');
 const homeUserRoutes = require('./routes/homeUserRoutes');
-const chefRoutes = require('./routes/RecipesChefRoutes'); // Chemin corrigé
+const recipesChefRoutes = require('./routes/recipesChefRoutes');  // Correction de la casse
+const ingredientsRoutes = require('./routes/ingredientsRoutes');
 
 app.use('/api/auth', loginRoutes);  
 app.use('/api', homeUserRoutes);
-app.use('/api/chef', chefRoutes);
+app.use('/api/recipes', recipesChefRoutes);  // Correction de la casse
+app.use('/api/ingredients', ingredientsRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.get('/', (req, res) => {

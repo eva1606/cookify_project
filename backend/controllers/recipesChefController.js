@@ -1,7 +1,7 @@
 const pool = require('../config/database.js');
+const path = require('path');
 
-const addRecipe = async (req, res) => 
-{
+const addRecipe = async (req, res) => {
     const { chef_id, title, ingredients, instructions, time, conservation, difficulty, prepTime, cookTime } = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
 
@@ -14,6 +14,7 @@ const addRecipe = async (req, res) =>
 
     try {
         const parsedIngredients = JSON.parse(ingredients);
+        console.log('Parsed ingredients:', parsedIngredients);
 
         const [user] = await pool.execute('SELECT * FROM dbShnkr24stud.tbl_102_users WHERE user_id = ?', [chef_id]);
         if (user.length === 0) {
@@ -25,6 +26,8 @@ const addRecipe = async (req, res) =>
             [chef_id, title, JSON.stringify(parsedIngredients), instructions, image_url, time, conservation, difficulty, prepTime, cookTime]
         );
 
+        console.log('Recipe added successfully:', recipeResult);
+
         res.status(201).json({ message: 'Recipe added successfully', recipeId: recipeResult.insertId });
     } catch (error) {
         console.error('Database insert error:', error);
@@ -32,8 +35,7 @@ const addRecipe = async (req, res) =>
     }
 };
 
-const getRecipesByChef = async (req, res) => 
-{
+const getRecipesByChef = async (req, res) => {
     const { chefId } = req.params;
     try {
         const [results] = await pool.execute('SELECT * FROM dbShnkr24stud.tbl_102_recipesbychef WHERE chef_id = ?', [chefId]);
@@ -44,8 +46,7 @@ const getRecipesByChef = async (req, res) =>
     }
 };
 
-const deleteRecipe = async (req, res) => 
-{
+const deleteRecipe = async (req, res) => {
     const { id } = req.params;
     try {
         await pool.execute('DELETE FROM dbShnkr24stud.tbl_102_recipesbychef WHERE id = ?', [id]);
@@ -57,8 +58,7 @@ const deleteRecipe = async (req, res) =>
     }
 };
 
-const updateRecipe = async (req, res) => 
-{
+const updateRecipe = async (req, res) => {
     const { id } = req.params;
     const { chef_id, title, ingredients, instructions, time, conservation, difficulty, prepTime, cookTime } = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : req.body.image_url;
@@ -74,6 +74,7 @@ const updateRecipe = async (req, res) =>
         );
 
         const parsedIngredients = JSON.parse(ingredients);
+        console.log('Parsed ingredients:', parsedIngredients);
 
         await pool.execute('DELETE FROM dbShnkr24stud.tbl_102_ingredients WHERE recipe_id = ?', [id]);
 
