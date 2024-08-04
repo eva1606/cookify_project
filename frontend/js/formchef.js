@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('recipe-form');
-    let ingredientsArray = [];
-
-    console.log("DOM fully loaded and parsed.");
+    const ingredientList = document.getElementById('ingredient-list');
 
     const chefId = localStorage.getItem('chefId');
     if (chefId) {
@@ -73,16 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
             method = 'PUT';
         }
 
-        console.log('Submitting form data to:', url);
-        console.log('Method:', method);
-        console.log('FormData:', formData);
-
         fetch(url, {
             method: method,
             body: formData
         })
         .then(response => {
-            console.log('Response status:', response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
             return response.json();
         })
         .then(data => {
@@ -103,27 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
         nameInput.name = 'name';
-        nameInput.placeholder = "Nom de l'ingrédient";
+        nameInput.placeholder = "Ingredient Name";
         nameInput.value = ingredient.name || '';
         nameInput.required = true;
 
         const quantityInput = document.createElement('input');
         quantityInput.type = 'text';
         quantityInput.name = 'quantity';
-        quantityInput.placeholder = 'Quantité';
+        quantityInput.placeholder = 'Quantity';
         quantityInput.value = ingredient.quantity || '';
         quantityInput.required = true;
 
         const unitInput = document.createElement('input');
         unitInput.type = 'text';
         unitInput.name = 'unit';
-        unitInput.placeholder = 'Unité';
+        unitInput.placeholder = 'Unit';
         unitInput.value = ingredient.unit || '';
         unitInput.required = true;
 
         const removeButton = document.createElement('button');
         removeButton.type = 'button';
-        removeButton.textContent = 'Supprimer';
+        removeButton.textContent = 'Remove';
         removeButton.onclick = function () {
             itemDiv.remove();
         };
@@ -133,9 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
         itemDiv.appendChild(unitInput);
         itemDiv.appendChild(removeButton);
         ingredientList.appendChild(itemDiv);
-    };
-
-    window.removeIngredient = function (button) {
-        button.parentElement.remove();
     };
 });
